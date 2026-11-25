@@ -1,0 +1,293 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", "Noto Sans Devanagari", system-ui, -apple-system, sans-serif;
+  --font-serif: "DM Serif Display", Georgia, serif;
+
+  --color-forest: #8A4A10;
+  --color-primary-green: #C97A1E;
+  --color-fresh-green: #F2A33D;
+  --color-sage: #FBE8C7;
+  --color-cream: #f7f3ea;
+  --color-amber: #d99a43;
+  --color-orange: #f28c28;
+  --color-charcoal: #202821;
+  --color-muted-grey: #6b756d;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: #f0e4c8;
+    color: #202821;
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  body {
+    overflow-x: hidden;
+    background: transparent;
+    color: #202821;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid #f28c28;
+    outline-offset: 3px;
+  }
+}
+
+.font-editorial {
+  font-family: var(--font-serif);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+#app-shell {
+  position: relative;
+  z-index: 1;
+  background-color: #f7f3ea;
+  transform-origin: 50% 50vh;
+  overflow: clip;
+}
+
+/* Petalyx-inspired tight editorial typography */
+.display-hero {
+  font-size: clamp(2.45rem, 5.4vw, 5.1rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 1.03;
+}
+
+.display-hero em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: #C97A1E;
+  letter-spacing: -0.02em;
+}
+
+.heading-editorial {
+  font-size: clamp(1.85rem, 3.4vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+.heading-editorial em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: #C97A1E;
+  letter-spacing: -0.02em;
+}
+
+.heading-editorial-dark em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: #d99a43;
+  letter-spacing: -0.02em;
+}
+
+/* Word split span for blur-to-sharp GSAP reveals */
+.w {
+  display: inline-block;
+  will-change: transform, filter, opacity;
+}
+
+/* Hero video vertical mask fading seamlessly into warm cream sky */
+.hero-media-mask {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 24%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 24%);
+}
+
+.cta-media-mask {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 26%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 26%);
+}
+
+/* Frosted glass squares */
+.glass-sq {
+  position: absolute;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  -webkit-backdrop-filter: blur(10px) saturate(1.2);
+  backdrop-filter: blur(10px) saturate(1.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
+  pointer-events: none;
+}
+
+/* Subtle grid square field fading downward */
+.sq-field-mask {
+  -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
+  mask-image: linear-gradient(to bottom, #000, transparent);
+}
+
+.grid-sq {
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(138, 74, 16, 0.08);
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+/* Ticket-notch cards inspired by Petalyx */
+.ticket-card {
+  -webkit-mask:
+    radial-gradient(circle 16px at 0 55%, #0000 97%, #000) left / 51% 100% no-repeat,
+    radial-gradient(circle 16px at 100% 55%, #0000 97%, #000) right / 51% 100% no-repeat;
+  mask:
+    radial-gradient(circle 16px at 0 55%, #0000 97%, #000) left / 51% 100% no-repeat,
+    radial-gradient(circle 16px at 100% 55%, #0000 97%, #000) right / 51% 100% no-repeat;
+}
+
+/* Frosted horizontal band behind tree/walker pass-through */
+.frosted-band {
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+}
+
+/* Tactile glossy olive/forest primary button */
+.btn-tactile {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 4px 12px rgba(138, 74, 16, 0.26);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease;
+}
+
+.btn-tactile:hover {
+  transform: translateY(-1px);
+}
+
+/* Subtle nav link hover underline */
+.nav-link-underline {
+  position: relative;
+}
+
+.nav-link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 1.5px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link-underline:hover::after,
+.nav-link-underline:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Drifting atmospheric motion */
+@keyframes driftA {
+  to {
+    transform: translateX(26px) translateY(4px);
+  }
+}
+
+@keyframes driftB {
+  to {
+    transform: translateX(-30px) translateY(6px);
+  }
+}
+
+.drift-a {
+  animation: driftA 14s ease-in-out infinite alternate;
+}
+
+.drift-b {
+  animation: driftB 17s ease-in-out infinite alternate;
+}
+
+/* Falling golden leaves / morning blossoms in CTA */
+@keyframes leafFall {
+  to {
+    transform: translate(var(--dx, 30px), 110vh) rotate(540deg);
+  }
+}
+
+.falling-leaf {
+  position: absolute;
+  top: -20px;
+  width: 11px;
+  height: 8px;
+  border-radius: 80% 0 80% 0;
+  background: linear-gradient(135deg, #f6cf8b, #d99a43);
+  opacity: 0.72;
+  animation: leafFall linear infinite;
+  pointer-events: none;
+}
+
+/* Accordion step blur-to-sharp active transition */
+.accordion-step {
+  opacity: 0;
+  transform: translateX(-24px);
+  filter: blur(6px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.5s ease,
+    filter 0.4s ease;
+}
+
+.accordion-panel.is-active .accordion-step {
+  opacity: 1;
+  transform: none;
+  filter: blur(0px);
+  transition:
+    opacity 0.7s 0.35s ease,
+    transform 0.9s 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 0.7s 0.35s ease;
+}
+
+@media (max-width: 760px) {
+  .accordion-step {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drift-a,
+  .drift-b,
+  .falling-leaf {
+    animation: none !important;
+  }
+
+  .accordion-step {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}

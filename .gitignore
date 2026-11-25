@@ -1,0 +1,17 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# AI Studio tooling artifacts and local working notes — not part of the site
+.aistudio/
+metadata.json
+readme2.md
+bun.lock
+
+# Orphaned generated asset not referenced by any component
+public/assets/aistudio/Person_walking_along_pathway_da2d5037_t0-4.4_e4a93636.mp4
